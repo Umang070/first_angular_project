@@ -1,0 +1,33 @@
+<h2>CLI component</h2>
+<!-- redirect to server.component.ts and check the template -->
+
+
+
+<!-- event binding -> onclick... perfrom any action -->
+<label>Server Name</label><br>
+<!-- <input class = "from-control"
+    type="text"
+    (input) = "onChangeServerName($event)"
+> -->
+
+<!-- two-way binding -- update itself without binding-->
+<input class="from-control" type="text" [(ngModel)]="serverName">
+<!-- <p>{{serverName}}</p> -->
+
+<br>
+
+<!-- property binding -> chnage native property of html elements dynamically  -->
+<button class="btn btn-primary" [disabled]="allowNewServer" (click)="onAddServer()"> Add Server</button>
+
+<!-- <p [innerText] = "allowNewServer"></p> -->
+<!-- <p> {{serverIsCreate}}</p> -->
+
+<!-- condition based action -->
+<p *ngIf="serverCreated; else noServer">Now,Server was created and server name is {{serverName}} </p>
+<ng-template #noServer>
+    <p>No Server was created</p>
+</ng-template>
+
+<!-- dynamically generate app-serverr component |||||||||| let i = index-->
+<app-server *ngFor="let servername of servers"></app-server>
+<p *ngFor="let servername of servers">New ServerName : {{servername}}</p>

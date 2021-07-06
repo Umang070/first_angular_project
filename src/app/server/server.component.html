@@ -1,0 +1,6 @@
+<!-- [ngStyle] -- binding the property of directives  -->
+<!-- backgroundColor(camel case) or 'background-color' -->
+<p [ngStyle]="{color: getColor()}" 
+   [ngClass]="{online: serverStatus === 'Online'}">
+   Server with ID {{serverID}} is {{serverStatus}}
+</p>
