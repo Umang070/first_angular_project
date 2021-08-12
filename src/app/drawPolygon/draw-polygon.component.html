@@ -1,31 +1,48 @@
 <div class="container">
-    <h1>Hello From Poly</h1>
+  <div>
+    <button id="poly" class="btn btn-primary" [disabled]="!isClick">
+      Draw Polygon
+    </button>
+  </div>
+  <br />
+  <div *ngFor="let sensor of sensorBtns; let i = index" style="display: inline-block">
+    <button class="btn btn-primary" style="margin-right: 1rem" (click)="sensorClick(sensor)">
+      {{ sensor.name }}
+    </button>
+  </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"
-        integrity="sha256–2z0P7MLoyxByUtvAk/xjkmindefS4auh4Pfzbm7y6g0=" crossorigin=”anonymous”>
-        </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.9/fabric.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"
-        integrity="sha512-QB3zR+8x8QAzPoX+ii34j268H8tGzLf/8dca+gzNWASANnmeO+UM7SIqBTf5Y3fr+8ULgSC4gS8oP/vqJTh7mw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <div>
+    <b *ngIf="isClick" style="color: blue">Press double click to close shape and stop</b>
+    <p *ngIf="isClick" style="color: red">{{ guide }}</p>
+  </div>
+  <br />
+  <div>
+    <input type="text" class="form-control" name="userInput" id="userInput" #userInput />
+    <br /><br />
+    <button class="btn btn-primary" style="margin-right: 1rem" (click)="drawRoiInput()">
+      Submit
+    </button>
+    <br><br>
+    <input type="text" class="form-control" name="userId" id="userId" #userId />
+    <button class="btn btn-danger" style="margin-right: 1rem" (click)="deleteObject()">
+      Delete Object
+    </button>
+    <br><br>
+    <ng-container>
+      <div>
+        <button class="btn btn-primary" [disabled]='disableAddZoneButton' (click)="zoneAdd()">
+          add zone
+        </button>
+        <div class="showInputField"></div>
+        <p *ngIf='disableAddZoneButton'>Maximum 3 zone are allowed</p>
+        <!-- <div *ngFor="let color of colorArray;let i=index">
+          <input *ngIf="zoneClickCount === i+1" type="text" class="form-control" [(ngModel)]="zoneName">
+        </div> -->
+      </div>
+    </ng-container>
+  </div>
+  <br>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- <script src="./index.js"></script> -->
-    <!-- <button class="btn btn-primary" id="censor1" title="Draw Polygon"
-    (click)="censorClick1('https://helpx.adobe.com/photoshop/using/convert-color-image-black-white.html')">Censor1</button>
+  <canvas id="canvasTools" height="500" width="850" style="border: 1px solid black"></canvas>
 
-<button class="btn btn-primary" id="poly" title="Draw Polygon"
-    (click)="censorClick2('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg')">Censor2</button> -->
-
-    <div *ngFor="let imgRef of imgRefs; let i=index;">
-
-        <br>
-        <button [id]="'poly'+i" class="btn btn-primary" id="censor1" (click)="censorClick(i)">Censor{{i+1}}</button>
-    </div>
-
-    <label style="color: blue"><b>Press double click to close shape and stop</b></label>
-
-    <canvas id="canvasTools" height="500" width="650" style="border: 1px solid black" class="canvas">
-    </canvas>
 </div>

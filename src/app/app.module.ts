@@ -14,6 +14,8 @@ import { AuthInterceptorService } from './auth-interceptor.service';
 import { LoggingInterceptorsService } from './logging-interceptor.service';
 import { DrawPolygonComponent } from './drawPolygon/draw-polygon.component';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 
 
@@ -30,7 +32,10 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
+    MaterialModule
+
   ],
   providers: [
     {

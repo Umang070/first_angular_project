@@ -1,0 +1,68 @@
+<div class="container">
+  <h1>Hello From Poly</h1>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.9/fabric.js"></script> -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js"
+    integrity="sha512-QB3zR+8x8QAzPoX+ii34j268H8tGzLf/8dca+gzNWASANnmeO+UM7SIqBTf5Y3fr+8ULgSC4gS8oP/vqJTh7mw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+  <!-- <script src="./index.js"></script> -->
+
+  <div>
+    <button id="poly" class="btn btn-primary" [disabled]="!isClick">
+      Draw Polygon
+    </button>
+  </div>
+  <br />
+  <div
+    *ngFor="let sensor of sensorBtns; let i = index"
+    style="display: inline-block"
+  >
+    <!-- <br> -->
+    <button
+      class="btn btn-primary"
+      style="margin-right: 1rem"
+      (click)="sensorClick(sensor)"
+    >
+      {{ sensor.name }}
+    </button>
+
+    <!-- <video id='video1' style="position: fixed; left: 500px" autoplay muted controls>
+            <source [src]="sensor.imgLink">
+           
+        </video> -->
+  </div>
+
+  <div>
+    <b *ngIf="isClick" style="color: blue"
+      >Press double click to close shape and stop</b
+    >
+    <p *ngIf="isClick" style="color: red">{{ guide }}</p>
+  </div>
+  <br />
+  <div>
+    <input type="text" name="userInput" id="userInput" #userInput />
+    <br /><br />
+    <button
+      class="btn btn-primary"
+      style="margin-right: 1rem"
+      (click)="drawRoiInput()"
+    >
+      Submit
+    </button>
+  </div>
+  <canvas
+    id="canvasTools"
+    height="500"
+    width="800"
+    style="border: 1px solid black"
+  ></canvas>
+</div>
